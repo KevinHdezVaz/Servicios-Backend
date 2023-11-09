@@ -67,7 +67,9 @@ if ($data['rid'] == '') {
             $result['orderid'] = $row['id'];
             $result['timesloat'] = $row['timesloat'];
             $result['astatus'] = $row['a_status'];
-            $result['delivery'] = $c['hno'] . ',' . $c['society'] . ',' . $c['area'] . '-' . $c['pincode']; 
+         //   $result['delivery'] = $c['hno'] . ',' . $c['society'] . ',' . $c['area'] . '-' . $c['pincode']; 
+            $result['delivery'] = $c['municipio'] . ', ' . $c['calle'] . ', ' . $c['society'] . ', ' . $c['hno'] . ', ' . $c['landmark'] . ', ' . $c['pincode'];
+
             $result['email'] = $cc['email'];
             $result['mobile'] = $cc['mobile'];
             $result['name'] = $c['name'];
@@ -76,11 +78,13 @@ if ($data['rid'] == '') {
             $result['latitud'] = $c['latitud'];
             $result['longitud'] = $c['longitud'];
             $result['municipio'] = $c['municipio'];
-
+            $result['calle'] = $c['calle'];
+            
+            
             $pp[] = $result;
         }
 
-        $returnArr = array("order_data" => $pp, "ResponseCode" => "200", "Result" => "true", "ResponseMsg" => "Orden exitosa");
+        $returnArr = array("order_data" => $pp, "ResponseCode" => "200", "Result" => "true", "ResponseMsg" => "Orden con exito");
     } else {
         $returnArr = array("ResponseCode" => "401", "Result" => "false", "ResponseMsg" => "No Pending Order Found!");   
     }

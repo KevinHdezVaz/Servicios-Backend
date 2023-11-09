@@ -18,7 +18,7 @@ else
 		$check = $con->query("select * from address where uid=".$uid." and id = ".$aid."")->num_rows;
 		if($check != 0)
 		{
-			//$con->query("Delete from address where uid=".$uid." and id = ".$aid."");
+			$con->query("Delete from address where uid=".$uid." and id = ".$aid."");
 			$returnArr = array("ResponseCode"=>"200","Result"=>"true","ResponseMsg"=>"For Demo purpose all  Insert/Update/Delete are DISABLED.");
 		}
 		else 

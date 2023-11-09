@@ -70,10 +70,15 @@ $dc = $con->query("select * from area_db where name='".$c['area']."'");
     $result['timesloat'] = $row['timesloat'];
 	$result['sign'] = $row['photo'];
 	$result['astatus'] = $row['a_status'];
-	$result['delivery'] = $c['hno'].','.$c['society'].','.$c['area'].'-'.$c['pincode']; 
+	//result['delivery'] = $c['hno'].','.$c['society'].','.$c['area'].'-'.$c['pincode']; 
+    $result['delivery'] = $c['municipio'] . ', ' . $c['calle'] . ', ' . $c['society'] . ', ' . $c['hno'] . ', ' . $c['landmark'] . ', ' . $c['pincode'];
+
 	$result['email'] = $cc['email'];
 	$result['mobile'] = $cc['mobile'];
 	$result['name'] = $c['name'];
+    $result['municipio'] = $c['municipio'];
+    $result['calle'] = $c['calle'];
+    
 	$pp[] = $result;
     }
    

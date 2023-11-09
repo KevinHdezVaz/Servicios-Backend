@@ -1,24 +1,31 @@
 <?php
-require 'vendor/autoload.php';
+ 
+ require __DIR__ . '/vendor/autoload.php';
 
-use Twilio\Rest\Client;
+$sid = "ACf8cbe95b563dd7232ccffe0744d796fd";
+$token = "7b5658414ab1b1388a05e932659e3993";
+$client = new Twilio\Rest\Client($sid, $token);
 
-$accountSid = 'ACa12cc3b2e0a4d17f6c0712e489d726cb';
-$authToken = 'c3fd4cd5f337b9333f666f371aeacff5';
+ 
+if (isset($_POST['recipientNumber'])) {
+    $recipientNumber = $_POST['recipientNumber'];
+    // Resto del código para procesar $recipientNumber
+} else {
+    // Manejo de errores en caso de que 'recipientNumber' no esté definido
+    echo "El campo 'recipientNumber' no se envió en la solicitud POST.";
+}
 
-$recipientNumber = $_POST['recipientNumber'];
 
 $otp = mt_rand(100000, 999999);
 
-$message = "Tu código de verificación es: $otp";
-
-$client = new Client($accountSid, $authToken);
+$message = "Código de verificación para Saint Remi es: $otp";
+ 
 
 try {
     $message = $client->messages->create(
         $recipientNumber,
         [
-            'from' => '12255353616',
+            'from' => '+16124243981',
             'body' => $message
         ]
     );
@@ -42,3 +49,5 @@ try {
     echo json_encode($response);
 }
 ?>
+
+ 

@@ -22,6 +22,12 @@ else
 		$p['hno'] = $row['hno'];
 		$p['society'] = $row['society'];
 		$p['area'] = $row['area'];
+		    // Agregar obtención de municipio y calle
+            $p['municipio'] = $row['municipio']; // Asegúrate de que esta columna exista en tu tabla
+            $p['calle'] = $row['calle']; // Asegúrate de que esta columna exista en tu tabla
+            
+
+			
 		$charge = $con->query("select * from area_db where name='".$row['area']."'")->fetch_assoc();
 		$charges = $con->query("select * from area_db where name='".$row['area']."'");
 		if($charges->num_rows !=0)
@@ -38,6 +44,7 @@ else
 		$p['type'] = $row['type'];
 		$p['status'] = $row['status'];
 		$p['name'] = $row['name'];
+		
 		$q[] = $p;
 	}
 	$wallet = $con->query("select * from user where id=".$uid."")->fetch_assoc();
